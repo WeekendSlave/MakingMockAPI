@@ -1,12 +1,12 @@
 package com.example.makeapi.domain.model;
 
-public class Field {
+public abstract class Field {
 
     private String type;
     private String key;
-    private Object value;
+    private String value;
 
-    public Field(String type, String key, Object value){
+    public Field(String type, String key, String value){
         this.type = type;
         this.key = key;
         this.value = value;
@@ -15,17 +15,20 @@ public class Field {
     public Field(String type, String key){
         this.type = type;
         this.key = key;
-        this.value = autoGenerateValue(type);
     }
     public Field(){
 
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getType() {
         return type;
     }
 
-    public Object getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -33,24 +36,7 @@ public class Field {
         this.type = type;
     }
 
-    public void setValue(Object value) {
+    public void setValue(String value) {
         this.value = value;
-    }
-
-    public Object autoGenerateValue(String type){
-        if (type.equals("string")){
-            return "random_value";
-        }else if(type.equals("integer")){
-            return 0;
-        }else if(type.equals("float")){
-            return 1.1;
-        }else if(type.startsWith("array")){
-            // type_모델 이름으로 가자
-            // _
-            return null;
-        }else{
-            // 모델찾기.
-            return null;
-        }
     }
 }

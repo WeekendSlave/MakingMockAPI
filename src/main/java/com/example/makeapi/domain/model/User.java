@@ -1,13 +1,13 @@
 package com.example.makeapi.domain.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "users")
 public class User {
 
-    @Id
-    private String _id;
+    @Indexed
     private String email;
     private String password;
 
@@ -19,7 +19,7 @@ public class User {
         return password;
     }
 
-    public String get_id() {
-        return _id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
